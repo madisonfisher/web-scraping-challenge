@@ -2,13 +2,8 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
-from flask_pymongo import PyMongo
 
 def scrape():
-    # instantiating mongo
-    mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_data')
-    db = mongo.db
-    
     #start up browser
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=True)
@@ -72,6 +67,9 @@ def scrape():
     hem_dict = pd.DataFrame(list(base_dict.items()),columns=["title", "img_url"])
     hemisphere_image_urls = hem_dict.to_dict('records')
 
+    #finish scraping 
+    browser.quit()
+    
     #saving data to db
     mars = {
         'NASA_title' : NASA_title,
@@ -80,7 +78,4 @@ def scrape():
         'mars_table' : html_mars_table,
         'hem_data' : hemisphere_image_urls
     }
-    db.posts.update({}, mars, upsert=True)
-    
-    #finish scraping 
-    browser.quit()
+    return mars
