@@ -11,8 +11,8 @@ db = mongo.db
 
 @app.route('/')
 def index():
-    mars_info = db.mars.find_one()
-    return render_template('index.html', mars_data=mars_info)
+    mars = db.mars_data.find_one()
+    return render_template('index.html', mars=mars)
 
 @app.route('/scrape')
 def scraper():
