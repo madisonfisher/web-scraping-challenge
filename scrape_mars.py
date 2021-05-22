@@ -34,7 +34,7 @@ def scrape():
     #only want the table on Mars
     mars_table = mars_tables[1]
     mars_table = mars_table.rename(columns = {0:"Fact", 1:"Data"})
-    html_mars_table = mars_table.to_html()
+    html_mars_table = mars_table.to_html(index=False)
 
     #Mars Hemispheres
     url4 = "https://marshemispheres.com/"
