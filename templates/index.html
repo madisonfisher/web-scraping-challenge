@@ -28,10 +28,10 @@
     </br>
     <div class="container">
         <div class="row">
-            <div class="card">
-                <h1 class="card-header">Latest Mars News</h1>
-                <h4 class="card-body">{{ mars.NASA_title }}</h4>
-                <p class="card-body">{{ mars.NASA_par}}</p>
+            <div>
+                <h1>Latest Mars News</h1>
+                <h4>{{ mars.NASA_title }}</h4>
+                <p>{{ mars.NASA_par}}</p>
             </div>
         </div>
         </br>
@@ -44,10 +44,10 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
-                <div class="card">
-                    <h1 class="card-header">Mars Facts</h1>
-                    <table class="card-body"> {{ mars.mars_table }} </table>
-                </div>
+                    <h1>Mars Facts</h1>
+                    {% autoescape false %}
+                    {{ mars.mars_table}}
+                    {% endautoescape %}
             </div>
         </div>
         </br>
