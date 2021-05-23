@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="jumbotron text-center" style="background-color: lightcoral; padding: 100px!important">
+    <div class="jumbotron text-center" style="background-color: lightcoral; padding: 75px!important">
         <div class="container">
             <h1>Mission to Mars</h1>
             <h3>
@@ -28,32 +28,41 @@
     </br>
     <div class="container">
         <div class="row">
-            <h1>Latest Mars News</h1>
-            <h4>{{ mars.NASA_title }}</h4>
-            <p>{{ mars.NASA_par}}</p>
+            <div class="card">
+                <h1 class="card-header">Latest Mars News</h1>
+                <h4 class="card-body">{{ mars.NASA_title }}</h4>
+                <p class="card-body">{{ mars.NASA_par}}</p>
+            </div>
         </div>
+        </br>
         <div class="row">
+
             <div class="col-md-8 col-sm-12">
-                <h1>Featured Mars Image</h1>
-                <img src="{{ mars.featured_image }}" />
+                <div class="card">
+                    <h1 class="card-header">Featured Mars Image</h1>
+                    <img class="card-body" src="{{ mars.featured_image }}" />
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
-                <h1>Mars Facts</h1>
-                
-                    <table> {{ mars.mars_table }} </table>
-                
+                <div class="card">
+                    <h1 class="card-header">Mars Facts</h1>
+                    <table class="card-body"> {{ mars.mars_table }} </table>
+                </div>
             </div>
         </div>
+        </br>
         <div class="row">
-            <h1 style="text-align: center;"> Mars Hemispheres</h1>
-            <div>
-            
-            <div class="col-md-3 col-sm-6">
-                <h3> {{ mars.hem_data['title'] }} </h3>
-                <img src=" {{ mars.hem_data['img_url'] }}" />
+            <div class="card">
+                <h1 class="card-header" style="text-align: center;"> Mars Hemispheres</h1>
+                {% set count = namespace(value=0) %}
+                {% for doc in mars.hem_data %}
+                <div class="col-md-3 col-sm-6 card-body">
+                    <img style="width:100%" src=" {{ mars.hem_data[count.value]['img_url'] }}" />
+                    <h5> {{ mars.hem_data[count.value]['title'] }} </h5>
+                </div>
+                {% set count.value = count.value + 1 %}
+                {% endfor %}
             </div>
-            
-        </div>
         </div>
     </div>
 </body>

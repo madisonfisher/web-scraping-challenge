@@ -65,7 +65,7 @@ def scrape():
     #moving lists into dictonary and then adding labels by processing it through a dataframe
     base_dict = dict(zip(hem_titles, hem_urls))
     hem_dict = pd.DataFrame(list(base_dict.items()),columns=["title", "img_url"])
-    hemisphere_image_urls = hem_dict.to_dict('records')
+    hemisphere_image_urls = hem_dict.to_dict('record')
 
     #finish scraping 
     browser.quit()
