@@ -52,8 +52,7 @@
         </div>
         </br>
         <div class="row">
-            <div class="card">
-                <h1 class="card-header" style="text-align: center;"> Mars Hemispheres</h1>
+                <h1 style="text-align: center;"> Mars Hemispheres</h1>
                 {% set count = namespace(value=0) %}
                 {% for doc in mars.hem_data %}
                 <div class="col-md-3 col-sm-6 card-body">
@@ -62,7 +61,6 @@
                 </div>
                 {% set count.value = count.value + 1 %}
                 {% endfor %}
-            </div>
         </div>
     </div>
 </body>
